@@ -1,0 +1,35 @@
+package templates
+
+templ InstructorsPage(title string) {
+    <html>
+        <head>
+            <title>{ title }</title>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <style>
+                body { font-family: Arial, sans-serif; margin: 40px; }
+                .nav { margin-bottom: 20px; }
+                .nav a { margin-right: 15px; text-decoration: none; color: #007bff; }
+                .nav a:hover { text-decoration: underline; }
+                .page-title { font-size: 24px; margin-bottom: 16px; }
+                .placeholder { color: #666; }
+            </style>
+        </head>
+        <body>
+            <div class="nav">
+                <a href="/">Dashboard</a>
+                <a href="/schools">Schools</a>
+                <a href="/instructors">Instructors</a>
+                <a href="/students">Students</a>
+                <a href="/courses">Courses</a>
+                <a href="/enrollments">Enrollments</a>
+                <a href="/payments">Payments</a>
+            </div>
+
+            <h1 class="page-title">{ title }</h1>
+
+            <p class="placeholder">No instructors to display yet.</p>
+        </body>
+    </html>
+}
+
