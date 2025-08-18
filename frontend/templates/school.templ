@@ -1,0 +1,109 @@
+// templates/school.templ
+package templates
+
+import (
+    "fmt"
+    school_entity "github.com/SulaimonYNWA/GoTemple/entity/schools"
+
+) 
+
+templ SchoolList(title string, schools []school_entity.School) {
+    <html>
+        <head>
+            <title>{ title }</title>
+            <style>
+                body { font-family: Arial, sans-serif; margin: 40px; }
+                table { border-collapse: collapse; width: 100%; }
+                th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+                th { background-color: #f2f2f2; }
+                .nav { margin-bottom: 20px; }
+                .nav a { margin-right: 15px; text-decoration: none; color: #007bff; }
+                .nav a:hover { text-decoration: underline; }
+            </style>
+        </head>
+        <body>
+            <div class="nav">
+                <a href="/">Dashboard</a>
+                <a href="/schools">Schools</a>
+                <a href="/instructors">Instructors</a>
+                <a href="/students">Students</a>
+                <a href="/courses">Courses</a>
+                <a href="/enrollments">Enrollments</a>
+                <a href="/payments">Payments</a>
+            </div>
+            
+            <h1>{ title }</h1>
+            
+            if len(schools) == 0 {
+                <p>No schools found.</p>
+            } else {
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Address</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        for _, school := range schools {
+                            <tr>
+                                <td>{ fmt.Sprintf("%d", school.ID) }</td>
+                                <td>{ school.Name }</td>
+                                <td>{ school.Address }</td>
+                                <td>
+                                    <a href={ templ.URL("/schools/" + fmt.Sprintf("%d", school.ID) + "/edit") }>Edit</a>
+                                    <a href={ templ.URL("/schools/" + fmt.Sprintf("%d", school.ID)) }>View</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+            
+            <div style="margin-top: 20px;">
+                <a href="/schools/new" style="background-color: #007bff; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px;">Add New School</a>
+            </div>
+        </body>
+    </html>
+}
+
+templ SchoolDetail(title string, school school_entity.School) {
+    <html>
+        <head>
+            <title>{ title }</title>
+            <style>
+                body { font-family: Arial, sans-serif; margin: 40px; }
+                .nav { margin-bottom: 20px; }
+                .nav a { margin-right: 15px; text-decoration: none; color: #007bff; }
+                .nav a:hover { text-decoration: underline; }
+                .detail-item { margin-bottom: 10px; }
+                .label { font-weight: bold; }
+            </style>
+        </head>
+        <body>
+            <div class="nav">
+                <a href="/">Dashboard</a>
+                <a href="/schools">Schools</a>
+            </div>
+            
+            <h1>{ title }</h1>
+            
+            <div class="detail-item">
+                <span class="label">ID:</span> { fmt.Sprintf("%d", school.ID) }
+            </div>
+            <div class="detail-item">
+                <span class="label">Name:</span> { school.Name }
+            </div>
+            <div class="detail-item">
+                <span class="label">Address:</span> { school.Address }
+            </div>
+            
+            <div style="margin-top: 20px;">
+                <a href={ templ.URL("/schools/" + fmt.Sprintf("%d", school.ID) + "/edit") } style="background-color: #007bff; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; margin-right: 10px;">Edit</a>
+                <a href="/schools" style="background-color: #6c757d; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px;">Back to List</a>
+            </div>
+        </body>
+    </html>
+}
