@@ -43,6 +43,7 @@ templ SchoolList(title string, schools []school_entity.School) {
                             <th>ID</th>
                             <th>Name</th>
                             <th>Address</th>
+                            <th>Contact</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -52,6 +53,7 @@ templ SchoolList(title string, schools []school_entity.School) {
                                 <td>{ fmt.Sprintf("%d", school.ID) }</td>
                                 <td>{ school.Name }</td>
                                 <td>{ school.Address }</td>
+                                <td>{ school.Phone }</td>
                                 <td>
                                     <a href={ templ.URL("/schools/" + fmt.Sprintf("%d", school.ID) + "/edit") }>Edit</a>
                                     <a href={ templ.URL("/schools/" + fmt.Sprintf("%d", school.ID)) }>View</a>
@@ -95,6 +97,9 @@ templ SchoolDetail(title string, school school_entity.School) {
             </div>
             <div class="detail-item">
                 <span class="label">Name:</span> { school.Name }
+            </div>
+             <div class="detail-item">
+                <span class="label">Contact:</span> { school.Phone }
             </div>
             <div class="detail-item">
                 <span class="label">Address:</span> { school.Address }
