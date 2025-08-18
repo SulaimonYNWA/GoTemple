@@ -23,7 +23,8 @@ func SetupRouter(db *sql.DB) http.Handler {
 	// Dependencies
 	schoolRepo := repo.NewSchoolRepo(db)
 	courseRepo := repo.NewCourseRepo(db)
-	schoolService := services.NewSchoolService(schoolRepo, courseRepo)
+	instructorRepo := repo.NewInstructorRepo(db)
+	schoolService := services.NewSchoolService(schoolRepo, courseRepo, instructorRepo)
 
 	// Handlers
 	schoolHandler := &handlers.SchoolHandler{
@@ -32,7 +33,8 @@ func SetupRouter(db *sql.DB) http.Handler {
 	}
 
 	instructorsHandler := &handlers.InstructorsHandler{
-		Logger: logger,
+		Logger:  logger,
+		Service: schoolService,
 	}
 
 	dashboardHandler := &handlers.DashboardHandler{
