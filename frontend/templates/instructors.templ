@@ -1,0 +1,65 @@
+package templates
+
+import (
+    "fmt"
+    instructors_entity "github.com/SulaimonYNWA/GoTemple/entity/instructors"
+)
+
+templ InstructorsPage(title string, instructors []instructors_entity.Instructor) {
+    <html>
+        <head>
+            <title>{ title }</title>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <style>
+                body { font-family: Arial, sans-serif; margin: 40px; }
+                .nav { margin-bottom: 20px; }
+                .nav a { margin-right: 15px; text-decoration: none; color: #007bff; }
+                .nav a:hover { text-decoration: underline; }
+                .page-title { font-size: 24px; margin-bottom: 16px; }
+                .placeholder { color: #666; }
+            </style>
+        </head>
+        <body>
+            <div class="nav">
+                <a href="/">Dashboard</a>
+                <a href="/schools">Schools</a>
+                <a href="/instructors">Instructors</a>
+                <a href="/students">Students</a>
+                <a href="/courses">Courses</a>
+                <a href="/enrollments">Enrollments</a>
+                <a href="/payments">Payments</a>
+            </div>
+
+            <h1 class="page-title">{ title }</h1>
+
+            if len(instructors) == 0 {
+                <p class="placeholder">No instructors found.</p>
+            } else {
+                <table style="border-collapse: collapse; width: 100%;">
+                    <thead>
+                        <tr>
+                            <th style="border: 1px solid #ddd; padding: 8px; text-align: left;">ID</th>
+                            <th style="border: 1px solid #ddd; padding: 8px; text-align: left;">Name</th>
+                            <th style="border: 1px solid #ddd; padding: 8px; text-align: left;">Email</th>
+                            <th style="border: 1px solid #ddd; padding: 8px; text-align: left;">Phone</th>
+                            <th style="border: 1px solid #ddd; padding: 8px; text-align: left;">School</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        for _, ins := range instructors {
+                            <tr>
+                                <td style="border: 1px solid #ddd; padding: 8px;">{ fmt.Sprintf("%d", ins.ID) }</td>
+                                <td style="border: 1px solid #ddd; padding: 8px;">{ ins.Name }</td>
+                                <td style="border: 1px solid #ddd; padding: 8px;">{ ins.Email }</td>
+                                <td style="border: 1px solid #ddd; padding: 8px;">{ ins.Phone }</td>
+                                <td style="border: 1px solid #ddd; padding: 8px;">{ ins.SchoolName }</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+        </body>
+    </html>
+}
+

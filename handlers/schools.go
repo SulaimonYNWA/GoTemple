@@ -7,6 +7,7 @@ import (
 	"net/http"
 
 	"log"
+	"strconv"
 
 	"github.com/SulaimonYNWA/GoTemple/frontend/templates"
 	services "github.com/SulaimonYNWA/GoTemple/services"
@@ -47,6 +48,31 @@ func (h *SchoolHandler) HandleListJSON(w http.ResponseWriter, r *http.Request, p
 
 	w.Header().Set("Content-Type", "application/json")
 	if err := json.NewEncoder(w).Encode(schools); err != nil {
+		h.Logger.Printf("failed to encode JSON: %v", err)
+		http.Error(w, "failed to encode response", http.StatusInternalServerError)
+		return
+	}
+}
+
+// HandleCoursesBySchool returns JSON list of courses for a given school id
+// GET /api/schools/:id/courses
+func (h *SchoolHandler) HandleCoursesBySchool(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
+	idStr := ps.ByName("id")
+	schoolID, err := strconv.Atoi(idStr)
+	if err != nil {
+		http.Error(w, "invalid school id", http.StatusBadRequest)
+		return
+	}
+
+	courses, err := h.Service.GetCoursesBySchool(schoolID)
+	if err != nil {
+		h.Logger.Printf("failed to fetch courses for school %d: %v", schoolID, err)
+		http.Error(w, "failed to fetch courses", http.StatusInternalServerError)
+		return
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	if err := json.NewEncoder(w).Encode(courses); err != nil {
 		h.Logger.Printf("failed to encode JSON: %v", err)
 		http.Error(w, "failed to encode response", http.StatusInternalServerError)
 		return
