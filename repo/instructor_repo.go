@@ -18,11 +18,22 @@ type instructorRepo struct {
 func NewInstructorRepo(db *sql.DB) InstructorRepo {
 	return &instructorRepo{db: db}
 }
-
 func (r *instructorRepo) GetAll() ([]instructor_entity.Instructor, error) {
 	rows, err := r.db.Query(`
-		SELECT id, first_name, last_name, email, phone, department, school_id, created_at
-		FROM instructors
+		SELECT 
+			i.id,
+			i.school_id,
+			i.specialization,
+			i.salary,
+			u.id,
+			u.name,
+			u.email,
+			u.phone,
+			u.created_at,
+			s.name
+		FROM instructors i
+		JOIN users u ON i.user_id = u.id
+		Join schools s ON i.school_id = s.id
 	`)
 	if err != nil {
 		return nil, fmt.Errorf("query failed: %w", err)
@@ -34,13 +45,15 @@ func (r *instructorRepo) GetAll() ([]instructor_entity.Instructor, error) {
 		var ins instructor_entity.Instructor
 		if err := rows.Scan(
 			&ins.ID,
-			&ins.FirstName,
-			&ins.LastName,
+			&ins.SchoolID,
+			&ins.SchoolName,
+			&ins.Specialization,
+			&ins.Salary,
+			&ins.Name,
 			&ins.Email,
 			&ins.Phone,
-			&ins.Department,
-			&ins.SchoolID,
 			&ins.CreatedAt,
+			&ins.SchoolName,
 		); err != nil {
 			return nil, fmt.Errorf("scan failed: %w", err)
 		}
@@ -51,4 +64,3 @@ func (r *instructorRepo) GetAll() ([]instructor_entity.Instructor, error) {
 	}
 	return instructors, nil
 }
-

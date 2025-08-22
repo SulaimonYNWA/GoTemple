@@ -1,16 +1,19 @@
 // entity/instructors/entity.go
 package entity
 
-import "time"
+import (
+	"time"
+)
 
 type Instructor struct {
-	ID         int       `db:"id"`
-	FirstName  string    `db:"first_name"`
-	LastName   string    `db:"last_name"`
-	Email      string    `db:"email"`
-	Phone      string    `db:"phone"`
-	Department string    `db:"department"`
-	SchoolID   int       `db:"school_id"`
-	CreatedAt  time.Time `db:"created_at"`
+	ID             int       `db:"id"`
+	Name           string    `db:"name"`
+	Phone          string    `db:"phone"`
+	Email          string    `db:"email"`
+	UserID         int64     `db:"user_id"`
+	SchoolName     string    `db:"name"`
+	SchoolID       int       `db:"school_id"`
+	Specialization string    `db:"specialization"`
+	Salary         float64   `db:"salary"`
+	CreatedAt      time.Time `db:"created_at"`
 }
-

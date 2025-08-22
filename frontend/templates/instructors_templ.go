@@ -41,7 +41,7 @@ func InstructorsPage(title string, instructors []instructors_entity.Instructor) 
 		var templ_7745c5c3_Var2 string
 		templ_7745c5c3_Var2, templ_7745c5c3_Err = templ.JoinStringErrs(title)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `instructors.templ`, Line: 11, Col: 26}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `frontend/templates/instructors.templ`, Line: 11, Col: 26}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var2))
 		if templ_7745c5c3_Err != nil {
@@ -54,7 +54,7 @@ func InstructorsPage(title string, instructors []instructors_entity.Instructor) 
 		var templ_7745c5c3_Var3 string
 		templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs(title)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `instructors.templ`, Line: 34, Col: 42}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `frontend/templates/instructors.templ`, Line: 34, Col: 42}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
 		if templ_7745c5c3_Err != nil {
@@ -70,7 +70,7 @@ func InstructorsPage(title string, instructors []instructors_entity.Instructor) 
 				return templ_7745c5c3_Err
 			}
 		} else {
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 5, "<table style=\"border-collapse: collapse; width: 100%;\"><thead><tr><th style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">ID</th><th style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">Name</th><th style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">Email</th><th style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">Phone</th><th style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">Department</th><th style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">School</th></tr></thead> <tbody>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 5, "<table style=\"border-collapse: collapse; width: 100%;\"><thead><tr><th style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">ID</th><th style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">Name</th><th style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">Email</th><th style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">Phone</th><th style=\"border: 1px solid #ddd; padding: 8px; text-align: left;\">School</th></tr></thead> <tbody>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -82,7 +82,7 @@ func InstructorsPage(title string, instructors []instructors_entity.Instructor) 
 				var templ_7745c5c3_Var4 string
 				templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(fmt.Sprintf("%d", ins.ID))
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `instructors.templ`, Line: 53, Col: 109}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `frontend/templates/instructors.templ`, Line: 52, Col: 109}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
 				if templ_7745c5c3_Err != nil {
@@ -93,9 +93,9 @@ func InstructorsPage(title string, instructors []instructors_entity.Instructor) 
 					return templ_7745c5c3_Err
 				}
 				var templ_7745c5c3_Var5 string
-				templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(ins.FirstName + " " + ins.LastName)
+				templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(ins.Name)
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `instructors.templ`, Line: 54, Col: 118}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `frontend/templates/instructors.templ`, Line: 53, Col: 92}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
 				if templ_7745c5c3_Err != nil {
@@ -108,7 +108,7 @@ func InstructorsPage(title string, instructors []instructors_entity.Instructor) 
 				var templ_7745c5c3_Var6 string
 				templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinStringErrs(ins.Email)
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `instructors.templ`, Line: 55, Col: 93}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `frontend/templates/instructors.templ`, Line: 54, Col: 93}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var6))
 				if templ_7745c5c3_Err != nil {
@@ -121,7 +121,7 @@ func InstructorsPage(title string, instructors []instructors_entity.Instructor) 
 				var templ_7745c5c3_Var7 string
 				templ_7745c5c3_Var7, templ_7745c5c3_Err = templ.JoinStringErrs(ins.Phone)
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `instructors.templ`, Line: 56, Col: 93}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `frontend/templates/instructors.templ`, Line: 55, Col: 93}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var7))
 				if templ_7745c5c3_Err != nil {
@@ -132,38 +132,25 @@ func InstructorsPage(title string, instructors []instructors_entity.Instructor) 
 					return templ_7745c5c3_Err
 				}
 				var templ_7745c5c3_Var8 string
-				templ_7745c5c3_Var8, templ_7745c5c3_Err = templ.JoinStringErrs(ins.Department)
+				templ_7745c5c3_Var8, templ_7745c5c3_Err = templ.JoinStringErrs(ins.SchoolName)
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `instructors.templ`, Line: 57, Col: 98}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `frontend/templates/instructors.templ`, Line: 56, Col: 98}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var8))
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
-				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 11, "</td><td style=\"border: 1px solid #ddd; padding: 8px;\">")
-				if templ_7745c5c3_Err != nil {
-					return templ_7745c5c3_Err
-				}
-				var templ_7745c5c3_Var9 string
-				templ_7745c5c3_Var9, templ_7745c5c3_Err = templ.JoinStringErrs(fmt.Sprintf("%d", ins.SchoolID))
-				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `instructors.templ`, Line: 58, Col: 115}
-				}
-				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var9))
-				if templ_7745c5c3_Err != nil {
-					return templ_7745c5c3_Err
-				}
-				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 12, "</td></tr>")
+				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 11, "</td></tr>")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 13, "</tbody></table>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 12, "</tbody></table>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 14, "</body></html>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 13, "</body></html>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
